@@ -48,6 +48,7 @@ def search():
     if 'state' in request.args:
         query['state'] = request.args['state'];
 
+    total_results = Location.objects(__raw__=query).count()
     locations = Location.objects(__raw__=query).limit(limit)
     results = []
     for location in locations:
@@ -64,9 +65,12 @@ def search():
                 'gsid': location.gsid
             }
         )
+
     return json.dumps({
         'meta': {
-            'code': 200
+            'code': 200,
+            'more_results': len(results) < total_results,
+            'total_results': total_results
         },
         'results': results
     }), 200
