@@ -4,7 +4,7 @@ db = MongoEngine()
 
 class Location(db.Document):
     meta = {
-        'collection': 'schools'
+        'collection': 'merged_schools'
     }
     name = db.StringField(required=True)
     street = db.StringField(required=True)

@@ -9,7 +9,7 @@ config = {
     'author_email': 'hi@desmondmorris.com',
     'version': '0.0.1',
     'install_requires': ['Flask', 'Flask-MongoEngine', 'nose'],
-    'packages': ['lofi'],
+    'packages': ['lofi', 'flask_cors'],
     'scripts': [],
     'name': 'LoFi'
 }
