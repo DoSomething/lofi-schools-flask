@@ -1,11 +1,26 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+try:
+    from flask.ext.cors import CORS  # The typical way to import flask-cors
+except ImportError:
+    # Path hack allows examples to be run without installation.
+    parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    os.sys.path.insert(0, parentdir)
+
+    from flask.ext.cors import CORS
+
 import json, os
 
 app = Flask(__name__)
 
 # Load configuration file lofi/config.py
 app.config.from_object('config')
-#app.config['DEBUG'] = True
+
+# Set CORS options on app configuration
+app.config['CORS_HEADERS'] = "Content-Type"
+app.config['CORS_RESOURCES'] = {r"/search*": {"origins": "*"}}
+app.config['DEBUG'] = True
+
+cors = CORS(app)
 
 # override variables with config file from local config file
 # if 'LOFI_CONFIG_FILE' in os.environ:

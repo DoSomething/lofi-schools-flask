@@ -1,33 +1,29 @@
-Logentries on OpenShift
+LOFI School Finder App
 ======================
 
-This git repo provides a quick method to get your OpenShift logs streaming to Logentries.
-
-Running on OpenShift
+Running on Heroku
 ----------------------------
+Install the Heroku Toolbelt
 
-Create a Logentries account at https://logentries.com/doc/openshift/
+Download and install the [Heroku Toolbelt](https://toolbelt.heroku.com/) or learn more about the Heroku Command Line Interface.
 
-Take note of the Account-Key that you are given, you will need it in the Configuration step below. If you have already created an account and haven't taken note of your account key, you can retrieve it following these instructions: 
-https://logentries.com/doc/accountkey/
+If you haven't already, log in to your Heroku account and follow the prompts to create a new SSH public key.
 
-Add the upstream Logentries repo to the Openshift app (called 'myappname' in the example below) that you want Logentries to manage the logs of: 
+    $ heroku login
 
-	cd myappname
-	git remote add upstream -m master https://github.com/logentries/le_openshift.git
-	git pull -s recursive -X theirs upstream master
+Clone the repository
 
-If you haven't got an Openshift app already setup, please refer to the Openshift documentation first (e.g. https://openshift.redhat.com/community/get-started).
+Use Git to clone lofischools's source code to your local machine.
 
-Configuration
--------------
+    $ heroku git:clone -a lofischools
+    $ cd lofischools
 
-Configure logentries/le_config.ini file with your Logentries Account Key. For this, simply paste the key inside the quotation marks in logentries/le_config.ini
+Deploy your changes
 
-Then push the repo
+Make some changes to the code you just cloned deploy them to Heroku using Git.
 
-	git add .
-	git commit -m "my first commit"
-	git push
+    $ git add .
+    $ git commit -am "make it better"
+    $ git push heroku master
 
-That's it, you can now run your app and check your logs, by logging into your Logentries account and refreshing the page.
+
