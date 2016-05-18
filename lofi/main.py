@@ -1,4 +1,7 @@
 from flask import Flask, request, jsonify
+
+import json, os
+
 try:
     from flask.ext.cors import CORS  # The typical way to import flask-cors
 except ImportError:
@@ -7,8 +10,6 @@ except ImportError:
     os.sys.path.insert(0, parentdir)
 
     from flask.ext.cors import CORS
-
-import json, os
 
 app = Flask(__name__)
 
@@ -80,7 +81,6 @@ def search():
                 'gsid': location.gsid
             }
         )
-
     return json.dumps({
         'meta': {
             'code': 200,
